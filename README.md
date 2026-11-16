@@ -68,3 +68,7 @@ The assistant should not rotate or revoke credentials unless the user separately
 ## Limitations
 
 This is a rotation inventory, not proof that a repository is credential-free. Dynamic names, encrypted files, binaries, external reusable workflows, large files, vendored dependencies, and credentials held only in systems such as Vault, Kubernetes, OpenShift, cloud CI, or deployment platforms may require separate inspection.
+
+## License
+
+Licensed under the [Apache License 2.0](LICENSE).
