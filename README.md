@@ -2,6 +2,13 @@
 
 A value-safe inventory tool for finding credential references across GitHub repositories where the authenticated user has `maintain` or `admin` access.
 
+> [!WARNING]
+> **Generated reports are sensitive operational artifacts. Treat them as confidential.**
+>
+> Reports do not contain secret values, but they can expose private repository and organization names, credential names, infrastructure and provider details, file paths, source locations, access gaps, and possible credential exposures. That information can help an attacker map systems and prioritize targets.
+>
+> **Do not commit reports, publish them, paste them into public issues or chats, or share them outside the intended security/operations team without reviewing and redacting them first.** Store reports only in an access-controlled location and delete copies that are no longer needed.
+
 The auditor combines:
 
 - GitHub secret metadata: names and timestamps only; GitHub never returns secret values.
@@ -16,7 +23,7 @@ The auditor combines:
 - Known credential formats are detected only to flag their locations; detected values are omitted.
 - Temporary repository snapshots are created outside the project directory.
 
-Always review generated findings before sharing them. An inventory can reveal private repository names, secret names, infrastructure details, and source locations even though it contains no secret values.
+The `.gitignore` reduces accidental commits, but it does not prevent someone from force-adding, uploading, copying, or otherwise disclosing a report.
 
 ## Requirements
 
@@ -49,6 +56,9 @@ The script writes:
 - `credential-rotation-inventory.md`: human-readable rotation runbook
 - `credential-rotation-inventory.csv`: sortable credential-reference inventory
 - `credential-rotation-inventory.json`: complete machine-readable results
+
+> [!CAUTION]
+> All three output files may contain private infrastructure metadata. Keep them out of source control and public collaboration systems. Review and redact them before sharing, even when the audience is internal.
 
 Re-running the command refreshes these files. To reuse already downloaded snapshots during development, set `AUDIT_CLONE_ROOT` to their directory.
 
