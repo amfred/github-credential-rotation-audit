@@ -1,0 +1,6 @@
+credential-rotation-inventory.md
+credential-rotation-inventory.csv
+credential-rotation-inventory.json
+__pycache__/
+*.py[cod]
+.DS_Store
